@@ -1,0 +1,21 @@
+[project]
+name = "interactive-bezier"
+version = "1.0.0"
+description = "An interactive GUI application for Bezier curves"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE.txt" }
+keywords = ["gui", "pygame", "bezier"]
+authors = [{ name = "Roman Seiner", email = "roman.seiner@fs.cvut.cz" }]
+dynamic = ["dependencies"]
+dependencies = { file = "requirements.txt" }
+
+[project.urls]
+"Homepage" = "https://github.com/StrawIII/interactive-bezier"
+
+[project.scripts]
+sample = "app:run"
+
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
