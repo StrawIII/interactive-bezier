@@ -1,0 +1,6 @@
+# USER SETTING
+fullscreen = false
+resolution = [1280, 720]
+point_size = 5
+line_thickness = 2
+background_color = "RED"
