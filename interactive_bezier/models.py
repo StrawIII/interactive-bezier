@@ -1,50 +1,46 @@
 from enum import Enum
-from typing import TYPE_CHECKING, List, Tuple
+from typing import List, Tuple
 
-import pygame
-from pydantic import BaseModel, model_validator
-
-if TYPE_CHECKING:
-    from interactive_bezier.interactive_bezier import App
+from pydantic import BaseModel
 
 
-class Color(Enum):
-    RED = (255, 0 ,0)
-    GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
-    YELLOW = (255, 255, 0)
-    PURPLE = (102, 0, 204)
-    
-
-class Shape(BaseModel):
-    size: int  # pixels
-    color: Color
-    app: "App"
-    
-   
+class MouseButton(Enum):
+    LEFT = 1
+    RIGHT = 3
 
 
-class Point(Shape):
-    px_coor: Tuple[int, int]
-    cart_coor: Tuple[float, float]
+class Point(BaseModel):
+    coor: Tuple[int, int]
 
-    @model_validator(mode="before")
-    def px_to_cart(cls, values):
-        ...
-    
-    @model_validator(mode="before")    
-    def cart_to_px(csl, values):
-        ...
+    @property
+    def x(self):
+        return self.coor[0]
 
-    def draw(self):
-        self.app.pygame.draw.circle(self.app.surface, color="white", center=self.px_coor, radius=5)
+    @property
+    def y(self):
+        return self.coor[1]
 
-    
-class Line(Shape):
-    p1: Point
-    p2: Point
+    def move(self, coor: Tuple[int, int]):
+        self.coor = coor
+
+    def is_clicked(self, mouse_coor: Tuple[int, int]) -> bool:
+        # TODO make this exect (new attribute size is needed)
+        if mouse_coor[0] in range(self.coor[0] - 10, self.coor[0] + 10) and mouse_coor[1] in range(
+            self.coor[1] - 10, self.coor[1] + 10
+        ):
+            return True
+
+        return False
 
 
 class Layer(BaseModel):
-    level: int
-    points: List[Point]
+    points: List[Point] = []
+
+    def __len__(self):
+        return len(self.points)
+
+    def __iter__(self):
+        return iter(self.points)
+
+    def add(self, point: Point):
+        self.points.append(point)
