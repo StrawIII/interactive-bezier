@@ -1,26 +1,27 @@
-# interactive-bezier
+# Interactive Bezier
 An interactive application for Bezier curves.
 
+# Requirements
+Python 3.8+
+
 # Installation
-To install all dependencies run this command
 ## Windows:
 ```shell
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 ## MacOS/Linus:
 ```shell
-pip3 install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 # Quick start
-To start the app run this command
 ## Windows:
 ```shell
-python run.py
+$ python run.py
 ```
 
 ## MacOS/Linux
 ```shell
-python3 run.py
+$ python3 run.py
 ```
 
 # Usage
