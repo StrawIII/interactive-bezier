@@ -25,17 +25,18 @@ class App:
         self.layer = Layer()
 
     def refresh(self):
+        step_count = 10_000
+
         self.surface.fill(color=pg.Color(self.config.user_settings.background_color))
 
         for p1, p2 in zip(self.layer.points[:-1], self.layer.points[1:]):
             self.draw_line(p1=p1, p2=p2)
 
         for point in self.layer:
-            point.draw()
             self.draw_point(point=point)
 
-        for step in range(0, 1000, 1):
-            self.draw_point(point=bezier_point(layer=self.layer, step=(step / 1000)))
+        for step in range(0, step_count, 1):
+            self.draw_point(point=bezier_point(layer=self.layer, step=(step / step_count)))
 
     def reset(self):
         self.layer = Layer()
