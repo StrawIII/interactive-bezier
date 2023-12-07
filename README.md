@@ -25,7 +25,7 @@ $ python3 run.py
 ```
 
 # Usage
-- right click to crate a new point
+- right click to create a new point
 - left click on a point to move it
 - press "R" to reset
 - pres "ESC" to close the app
