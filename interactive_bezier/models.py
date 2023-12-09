@@ -6,7 +6,12 @@ from pydantic import BaseModel
 
 class MouseButton(Enum):
     LEFT = 1
+    MIDDLE = 2
     RIGHT = 3
+    WHEELUP = 4
+    WHEELDONW = 5
+    MOUSE_5 = 6
+    MOUSE_6 = 7
 
 
 class Point(BaseModel):
