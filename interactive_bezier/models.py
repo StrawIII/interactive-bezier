@@ -12,6 +12,9 @@ class MouseButton(Enum):
 class Point(BaseModel):
     coor: Tuple[int, int]
 
+    def __eq__(self, other):
+        return self.coor == other
+
     @property
     def x(self):
         return self.coor[0]
@@ -44,3 +47,6 @@ class Layer(BaseModel):
 
     def add(self, point: Point):
         self.points.append(point)
+
+    def remove(self, point: Point):
+        self.points.remove(point)
