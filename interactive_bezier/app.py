@@ -59,23 +59,38 @@ class App:
         )
 
     def mainloop(self):
+        selected_point = None
+
         while True:
             for event in pg.event.get():
                 if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                     return
 
                 if event.type == pg.MOUSEBUTTONUP and event.button == MouseButton.RIGHT.value:
-                    self.layer.add(point=Point(coor=pg.mouse.get_pos()))
+                    for point in self.layer:
+                        if point.is_over(mouse_coor=pg.mouse.get_pos()):
+                            self.layer.remove(point=point)
+                            break
+                    else:
+                        self.layer.add(point=Point(coor=pg.mouse.get_pos()))
+
                     self.refresh()
 
                 if event.type == pg.MOUSEBUTTONDOWN and event.button == MouseButton.LEFT.value:
-                    # TODO finish moving point
                     mouse_coor = pg.mouse.get_pos()
 
                     for point in self.layer:
-                        if point.is_clicked(mouse_coor=mouse_coor):
-                            point.move(coor=mouse_coor)
-                            self.refresh()
+                        if point.is_over(mouse_coor=mouse_coor):
+                            selected_point = point
+
+                if event.type == pg.MOUSEBUTTONUP and event.button == MouseButton.LEFT.value and selected_point:
+                    selected_point.coor = pg.mouse.get_pos()
+                    self.refresh()
+
+                # TODO optimize bezier calculation to seemlesly move the points
+                # if event.type == pg.MOUSEMOTION and selected_point:
+                #     selected_point.move(movement=event.rel)
+                #     self.refresh()
 
                 if event.type == pg.KEYDOWN and event.key == pg.K_r:
                     self.reset()
