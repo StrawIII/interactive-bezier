@@ -1,6 +1,8 @@
 from interactive_bezier.models import Layer, Point
 
 
+# TODO optimize (numpy)
+# TODO use cartesian coordinates (eliminates rounding error)
 def bezier_point(layer: Layer, step: float) -> Point:
     if len(layer) == 1:
         return layer.points[0]
