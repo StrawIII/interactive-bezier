@@ -26,6 +26,7 @@ python3 run.py
 
 # Usage
 - right click to create a new point
+- right click on existing point to remove it
 - left click on a point to move it
 - press "R" to reset
 - pres "ESC" to close the app
