@@ -6,21 +6,21 @@ Python 3.8+
 
 # Installation
 ## Windows:
-```shell
+```ps
 pip install -r requirements.txt
 ```
-## MacOS/Linus:
-```shell
+## MacOS/Linux:
+```bash
 pip3 install -r requirements.txt
 ```
 # Quick start
 ## Windows:
-```shell
+```ps
 python run.py
 ```
 
 ## MacOS/Linux
-```shell
+```bash
 python3 run.py
 ```
 
