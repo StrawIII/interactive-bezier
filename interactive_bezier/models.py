@@ -1,4 +1,5 @@
 from enum import Enum
+from operator import add
 from typing import List, Tuple
 
 from pydantic import BaseModel
@@ -25,17 +26,14 @@ class Point(BaseModel):
     def y(self):
         return self.coor[1]
 
-    def move(self, coor: Tuple[int, int]):
-        self.coor = coor
+    def move(self, movement: Tuple[int, int]):
+        self.coor = tuple(x + y for x, y in zip(self.coor, movement))
 
-    def is_clicked(self, mouse_coor: Tuple[int, int]) -> bool:
+    def is_over(self, mouse_coor: Tuple[int, int]) -> bool:
         # TODO make this exect (new attribute size is needed)
-        if mouse_coor[0] in range(self.coor[0] - 10, self.coor[0] + 10) and mouse_coor[1] in range(
+        return mouse_coor[0] in range(self.coor[0] - 10, self.coor[0] + 10) and mouse_coor[1] in range(
             self.coor[1] - 10, self.coor[1] + 10
-        ):
-            return True
-
-        return False
+        )
 
 
 class Layer(BaseModel):
