@@ -1,5 +1,4 @@
 from enum import Enum
-from operator import add
 from typing import List, Tuple
 
 from pydantic import BaseModel
