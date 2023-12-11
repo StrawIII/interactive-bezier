@@ -24,17 +24,17 @@ def bezier():
         bezier_point(layer=l1, step=step / STEP_COUNT)
 
     stop = perf_counter()
-    return f"bezier runtime:       {stop - start:.5f} s"
+    return f"bezier:       {stop - start:.5f} s"
 
 
 def bezier_numpy():
     start = perf_counter()
 
-    for step in np.arange(0, STEP_COUNT, 1):
-        bezier_point_numpy(layer=l2, step=step / STEP_COUNT)
+    for step in np.arange(0, 1, 1 / STEP_COUNT):
+        bezier_point_numpy(layer=l2, step=step)
 
     stop = perf_counter()
-    return f"bezier numpy runtime: {stop - start:.5f} s"
+    return f"bezier numpy: {stop - start:.5f} s"
 
 
 if __name__ == "__main__":
