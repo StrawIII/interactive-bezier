@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 
 from interactive_bezier.models import Layer, Point
