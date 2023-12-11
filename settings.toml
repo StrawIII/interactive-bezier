@@ -10,5 +10,4 @@ diameter = 2  # px
 color = "red" # supported colors https://www.pygame.org/docs/ref/color_list.html
 
 [line]
-thickness = 2   # px
 color = "white" # supported colors https://www.pygame.org/docs/ref/color_list.html

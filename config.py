@@ -13,7 +13,6 @@ class PointSettings(BaseSettings):
 
 
 class LineSettings(BaseSettings):
-    thickness: int
     color: str
 
 
@@ -38,7 +37,7 @@ class Config(BaseSettings):
         performance_mode_threshold=4,
         background_color="gray30",
         point=PointSettings(diameter=5, color="white"),
-        line=LineSettings(thickness=2, color="white"),
+        line=LineSettings(color="white"),
     )
     try:
         user_settings: UserSetting
