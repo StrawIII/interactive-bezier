@@ -19,8 +19,10 @@ class LineSettings(BaseSettings):
 
 class UserSetting(BaseSettings):
     fullscreen: bool
-    resolution: list  # tuple?
+    resolution: list
     framerate: int
+    step_count: int
+    performance_mode_threshold: int
     background_color: str
     point: PointSettings
     line: LineSettings
@@ -32,6 +34,8 @@ class Config(BaseSettings):
         fullscreen=True,
         resolution=[1280, 720],
         framerate=60,
+        step_count=100,
+        performance_mode_threshold=4,
         background_color="gray30",
         point=PointSettings(diameter=5, color="white"),
         line=LineSettings(thickness=2, color="white"),
