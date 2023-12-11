@@ -8,7 +8,6 @@ license = { file = "LICENSE.txt" }
 keywords = ["gui", "pygame", "bezier"]
 authors = [{ name = "Roman Seiner", email = "roman.seiner@fs.cvut.cz" }]
 dynamic = ["dependencies"]
-dependencies = { file = "requirements.txt" }
 
 [project.urls]
 "Homepage" = "https://github.com/StrawIII/interactive-bezier"
@@ -19,3 +18,6 @@ sample = "app:run"
 [build-system]
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
