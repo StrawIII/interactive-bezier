@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import List, Tuple
 
+import numpy as np
 from pydantic import BaseModel
 
 
@@ -43,6 +44,10 @@ class Layer(BaseModel):
 
     def __iter__(self):
         return iter(self.points)
+
+    @property
+    def as_ndarray(self) -> np.ndarray:
+        return np.array(object=[point.coor for point in self.points], dtype=np.float32)
 
     def add(self, point: Point):
         self.points.append(point)
