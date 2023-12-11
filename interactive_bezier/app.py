@@ -44,10 +44,11 @@ class App:
         for point in self.layer:
             self.draw_point(point=point)
 
-        for step in np.arange(0, 1, 1 / self.config.user_settings.step_count):
-            coor = (round(coor) for coor in bezier_point_numpy(layer=self.layer.as_ndarray, step=step))
+        if len(self.layer) >= 1:
+            for step in np.arange(0, 1, 1 / self.config.user_settings.step_count):
+                coor = (round(coor) for coor in bezier_point_numpy(layer=self.layer.as_ndarray, step=step))
 
-            self.draw_point(point=Point(coor=coor))
+                self.draw_point(point=Point(coor=coor))
 
     # funkce pro vyčištění a promazání dat
     def reset(self):
