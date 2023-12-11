@@ -1,8 +1,10 @@
+from typing import List
+
+import numpy as np
+
 from interactive_bezier.models import Layer, Point
 
 
-# TODO optimize (numpy)
-# TODO use cartesian coordinates (eliminates rounding error)
 def bezier_point(layer: Layer, step: float) -> Point:
     if len(layer) == 1:
         return layer.points[0]
@@ -20,3 +22,18 @@ def bezier_point(layer: Layer, step: float) -> Point:
         )
 
     return bezier_point(layer=next_layer, step=step)
+
+
+def bezier_point_numpy(layer: np.ndarray, step: float) -> np.ndarray:
+    layer_lenght = len(layer)
+
+    if layer_lenght == 1:
+        return layer[0]
+
+    next_layer = np.empty(shape=(layer_lenght - 1, 2), dtype=np.float32)
+
+    for i in np.arange(layer_lenght - 1):
+        next_layer[i][0] = layer[i][0] + (layer[i + 1][0] - layer[i][0]) * step
+        next_layer[i][1] = layer[i][1] + (layer[i + 1][1] - layer[i][1]) * step
+
+    return bezier_point_numpy(layer=next_layer, step=step)
