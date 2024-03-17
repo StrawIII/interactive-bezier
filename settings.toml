@@ -2,7 +2,7 @@ fullscreen = false
 resolution = [1280, 720]       # px
 framerate = 60                 # FPS
 step_count = 100               # higher count will hinder perfomance
-performance_mode_threshold = 4 # max number of points before more efficient rededing is used
+performance_mode_threshold = 4 # max number of points before more efficient rendeding is used
 background_color = "gray"      # supported colors https://www.pygame.org/docs/ref/color_list.html
 
 [point]
