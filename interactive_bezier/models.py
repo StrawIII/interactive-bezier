@@ -30,7 +30,6 @@ class Point(BaseModel):
         self.coor = tuple(x + y for x, y in zip(self.coor, movement))
 
     def is_over(self, mouse_coor: Tuple[int, int]) -> bool:
-        # TODO make this exect (new attribute size is needed)
         return mouse_coor[0] in range(self.coor[0] - 10, self.coor[0] + 10) and mouse_coor[1] in range(
             self.coor[1] - 10, self.coor[1] + 10
         )
